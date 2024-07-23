@@ -1,5 +1,7 @@
 # Git Tutorial
 
+ここに学んだGitの機能やコマンドをまとめる
+
 ## Introduction
 This is a basic tutorial for Git.
 
