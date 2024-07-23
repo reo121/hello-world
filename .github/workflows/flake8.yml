@@ -1,14 +1,10 @@
-name: flake8
+name: flake8 Lint
 
-on:
-  pull_request:
-    paths:
-      - 'test.py'
+on: [push, pull_request]
 
 jobs:
-  syntax-check:
+  flake8:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
 
