@@ -3,19 +3,19 @@ name: flake8
 on:
   pull_request:
     paths:
-      - '**.py'
+      - 'test.py'
 
 jobs:
   syntax-check:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v2
       with:
-       python-version: '3.x'
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
@@ -24,10 +24,11 @@ jobs:
 
     - name: Analysing the code with flake8
       run: |
-        flake8 . > flake8_report.txt || true
+        flake8 . --tee --output-file flake8_report.txt || true
+        cat flake8_report.txt # ここでレポートの内容を表示
 
     - name: Upload flake8 report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: flake8-report
-        path: flake8_repport.txt
+        path: flake8_report.txt
